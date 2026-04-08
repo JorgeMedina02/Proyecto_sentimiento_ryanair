@@ -1,0 +1,13 @@
+# Entornos virtuales
+venv/
+env/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Datos crudos (no queremos subir archivos pesados a GitHub)
+data/raw/
+
+# Archivos de sistema operativo
+.DS_Store

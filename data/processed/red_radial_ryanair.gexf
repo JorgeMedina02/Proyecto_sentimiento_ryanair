@@ -1,0 +1,932 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-04-08">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="2" title="avg_sentiment" type="double" />
+      <attribute id="3" title="Categoria_Emocion" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="type" type="string" />
+      <attribute id="1" title="tamanio_visual" type="long" />
+    </attributes>
+    <nodes>
+      <node id="Personal" label="PERSONAL">
+        <attvalues>
+          <attvalue for="0" value="Pilar" />
+          <attvalue for="1" value="200" />
+        </attvalues>
+      </node>
+      <node id="Asientos" label="ASIENTOS">
+        <attvalues>
+          <attvalue for="0" value="Pilar" />
+          <attvalue for="1" value="200" />
+        </attvalues>
+      </node>
+      <node id="Precio" label="PRECIO">
+        <attvalues>
+          <attvalue for="0" value="Pilar" />
+          <attvalue for="1" value="200" />
+        </attvalues>
+      </node>
+      <node id="Puntualidad" label="PUNTUALIDAD">
+        <attvalues>
+          <attvalue for="0" value="Pilar" />
+          <attvalue for="1" value="200" />
+        </attvalues>
+      </node>
+      <node id="Equipaje" label="EQUIPAJE">
+        <attvalues>
+          <attvalue for="0" value="Pilar" />
+          <attvalue for="1" value="200" />
+        </attvalues>
+      </node>
+      <node id="Experiencia" label="EXPERIENCIA">
+        <attvalues>
+          <attvalue for="0" value="Pilar" />
+          <attvalue for="1" value="200" />
+        </attvalues>
+      </node>
+      <node id="crew" label="crew">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="polite" label="polite">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="comfortable" label="comfortable">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="cabin" label="cabin">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="sit" label="sit">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="space" label="space">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="hour" label="hour">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="time" label="time">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="staff" label="staff">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="checkin" label="checkin">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="good" label="good">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="seats" label="seats">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="legroom" label="legroom">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="cheap" label="cheap">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="pay" label="pay">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="cost" label="cost">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="recommend" label="recommend">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="seat" label="seat">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="website" label="website">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="ontime" label="ontime">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="delayed" label="delayed">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="schedule" label="schedule">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="hours" label="hours">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="bag" label="bag">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="boarding" label="boarding">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="review" label="review">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="friendly" label="friendly">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="fare" label="fare">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="gate" label="gate">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="experience" label="experience">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="service" label="service">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="price" label="price">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="charge" label="charge">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="charged" label="charged">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="desk" label="desk">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="luggage" label="luggage">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="checked" label="checked">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="rude" label="rude">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="money" label="money">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="value" label="value">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="stuck" label="stuck">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="bad" label="bad">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="worst" label="worst">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="professional" label="professional">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="paying" label="paying">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="baggage" label="baggage">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="late" label="late">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="ignored" label="ignored">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="delay" label="delay">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="customer" label="customer">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="customers" label="customers">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="return" label="return">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="recline" label="recline">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="times" label="times">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="checking" label="checking">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="uncomfortable" label="uncomfortable">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="fees" label="fees">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="expensive" label="expensive">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="refund" label="refund">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="cancelled" label="cancelled">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="priority" label="priority">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="later" label="later">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="row" label="row">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="extra" label="extra">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="suitcase" label="suitcase">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="waiting" label="waiting">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="bags" label="bags">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="overhead" label="overhead">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="aisle" label="aisle">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="helpful" label="helpful">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="excellent" label="excellent">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="carry" label="carry">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+      <node id="attendant" label="attendant">
+        <attvalues>
+          <attvalue for="0" value="Aspecto" />
+          <attvalue for="1" value="50" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="Personal" target="crew" id="0" weight="504">
+        <attvalues>
+          <attvalue for="2" value="0.3816263888888889" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="polite" id="1" weight="66">
+        <attvalues>
+          <attvalue for="2" value="0.3508681818181818" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="staff" id="2" weight="674">
+        <attvalues>
+          <attvalue for="2" value="-0.03671023738872404" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="friendly" id="3" weight="261">
+        <attvalues>
+          <attvalue for="2" value="0.6196325670498084" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="service" id="4" weight="587">
+        <attvalues>
+          <attvalue for="2" value="-0.11542419080068143" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="rude" id="5" weight="209">
+        <attvalues>
+          <attvalue for="2" value="-0.5843397129186603" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="professional" id="6" weight="78">
+        <attvalues>
+          <attvalue for="2" value="0.5126307692307692" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="ignored" id="7" weight="24">
+        <attvalues>
+          <attvalue for="2" value="-0.4597541666666667" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="helpful" id="8" weight="147">
+        <attvalues>
+          <attvalue for="2" value="0.4902517006802721" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Personal" target="attendant" id="9" weight="44">
+        <attvalues>
+          <attvalue for="2" value="-0.3405909090909091" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="comfortable" id="10" weight="117">
+        <attvalues>
+          <attvalue for="2" value="0.6996589743589744" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="cabin" id="11" weight="467">
+        <attvalues>
+          <attvalue for="2" value="0.2223370449678801" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="sit" id="12" weight="154">
+        <attvalues>
+          <attvalue for="2" value="-0.013498051948051948" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="space" id="13" weight="90">
+        <attvalues>
+          <attvalue for="2" value="0.2566555555555556" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="seats" id="14" weight="533">
+        <attvalues>
+          <attvalue for="2" value="0.10524765478424015" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="legroom" id="15" weight="99">
+        <attvalues>
+          <attvalue for="2" value="0.5272707070707071" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="seat" id="16" weight="386">
+        <attvalues>
+          <attvalue for="2" value="0.14098756476683938" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="website" id="17" weight="157">
+        <attvalues>
+          <attvalue for="2" value="-0.18473375796178343" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="recline" id="18" weight="39">
+        <attvalues>
+          <attvalue for="2" value="0.2269974358974359" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="uncomfortable" id="19" weight="110">
+        <attvalues>
+          <attvalue for="2" value="-0.20858" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="row" id="20" weight="70">
+        <attvalues>
+          <attvalue for="2" value="0.18974714285714286" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Asientos" target="aisle" id="21" weight="32">
+        <attvalues>
+          <attvalue for="2" value="0.05642499999999999" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="cheap" id="22" weight="235">
+        <attvalues>
+          <attvalue for="2" value="0.01315276595744681" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="pay" id="23" weight="617">
+        <attvalues>
+          <attvalue for="2" value="-0.24733711507293354" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="cost" id="24" weight="272">
+        <attvalues>
+          <attvalue for="2" value="-0.03723051470588235" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="fare" id="25" weight="54">
+        <attvalues>
+          <attvalue for="2" value="0.03741666666666666" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="price" id="26" weight="256">
+        <attvalues>
+          <attvalue for="2" value="0.138741796875" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="charge" id="27" weight="201">
+        <attvalues>
+          <attvalue for="2" value="-0.2514681592039801" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="charged" id="28" weight="173">
+        <attvalues>
+          <attvalue for="2" value="-0.3732774566473988" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="money" id="29" weight="349">
+        <attvalues>
+          <attvalue for="2" value="-0.014694555873925501" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="value" id="30" weight="99">
+        <attvalues>
+          <attvalue for="2" value="0.6580858585858586" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="paying" id="31" weight="129">
+        <attvalues>
+          <attvalue for="2" value="-0.2820891472868217" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="fees" id="32" weight="83">
+        <attvalues>
+          <attvalue for="2" value="-0.30546385542168675" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="expensive" id="33" weight="101">
+        <attvalues>
+          <attvalue for="2" value="-0.10481683168316833" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="refund" id="34" weight="117">
+        <attvalues>
+          <attvalue for="2" value="-0.41941282051282053" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="priority" id="35" weight="267">
+        <attvalues>
+          <attvalue for="2" value="0.09002359550561798" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Precio" target="extra" id="36" weight="384">
+        <attvalues>
+          <attvalue for="2" value="-0.14049427083333335" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="hour" id="37" weight="334">
+        <attvalues>
+          <attvalue for="2" value="-0.23262215568862277" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="time" id="38" weight="930">
+        <attvalues>
+          <attvalue for="2" value="0.09683849462365592" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="ontime" id="39" weight="28">
+        <attvalues>
+          <attvalue for="2" value="0.712375" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="delayed" id="40" weight="255">
+        <attvalues>
+          <attvalue for="2" value="-0.22759372549019607" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="schedule" id="41" weight="60">
+        <attvalues>
+          <attvalue for="2" value="0.50744" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="hours" id="42" weight="393">
+        <attvalues>
+          <attvalue for="2" value="-0.3277277353689567" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="stuck" id="43" weight="37">
+        <attvalues>
+          <attvalue for="2" value="-0.3449675675675676" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="late" id="44" weight="256">
+        <attvalues>
+          <attvalue for="2" value="-0.0782546875" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="delay" id="45" weight="183">
+        <attvalues>
+          <attvalue for="2" value="-0.16315956284153005" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="times" id="46" weight="242">
+        <attvalues>
+          <attvalue for="2" value="0.07611404958677685" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="cancelled" id="47" weight="104">
+        <attvalues>
+          <attvalue for="2" value="-0.3921240384615385" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="later" id="48" weight="129">
+        <attvalues>
+          <attvalue for="2" value="-0.2599201550387597" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Puntualidad" target="waiting" id="49" weight="187">
+        <attvalues>
+          <attvalue for="2" value="-0.27845935828877005" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="checkin" id="50" weight="241">
+        <attvalues>
+          <attvalue for="2" value="-0.1544058091286307" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="bag" id="51" weight="280">
+        <attvalues>
+          <attvalue for="2" value="-0.14929857142857145" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="boarding" id="52" weight="735">
+        <attvalues>
+          <attvalue for="2" value="0.06798707482993198" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="gate" id="53" weight="288">
+        <attvalues>
+          <attvalue for="2" value="-0.10854270833333333" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="desk" id="54" weight="139">
+        <attvalues>
+          <attvalue for="2" value="-0.2818503597122302" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="luggage" id="55" weight="408">
+        <attvalues>
+          <attvalue for="2" value="0.07474901960784314" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="checked" id="56" weight="196">
+        <attvalues>
+          <attvalue for="2" value="-0.12385" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="baggage" id="57" weight="239">
+        <attvalues>
+          <attvalue for="2" value="-0.0475092050209205" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="checking" id="58" weight="120">
+        <attvalues>
+          <attvalue for="2" value="-0.2778275" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="suitcase" id="59" weight="52">
+        <attvalues>
+          <attvalue for="2" value="-0.3850442307692308" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="bags" id="60" weight="208">
+        <attvalues>
+          <attvalue for="2" value="-0.14292884615384616" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="overhead" id="61" weight="71">
+        <attvalues>
+          <attvalue for="2" value="-0.07038450704225352" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Equipaje" target="carry" id="62" weight="80">
+        <attvalues>
+          <attvalue for="2" value="-0.1505375" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="good" id="63" weight="369">
+        <attvalues>
+          <attvalue for="2" value="0.4795626016260162" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="recommend" id="64" weight="124">
+        <attvalues>
+          <attvalue for="2" value="-0.04193467741935483" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="review" id="65" weight="727">
+        <attvalues>
+          <attvalue for="2" value="0.1496917469050894" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="experience" id="66" weight="347">
+        <attvalues>
+          <attvalue for="2" value="-0.06371527377521614" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="bad" id="67" weight="186">
+        <attvalues>
+          <attvalue for="2" value="-0.16071290322580645" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="worst" id="68" weight="195">
+        <attvalues>
+          <attvalue for="2" value="-0.6754158974358974" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="customer" id="69" weight="972">
+        <attvalues>
+          <attvalue for="2" value="-0.0007365226337448556" />
+          <attvalue for="3" value="Neutro" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="customers" id="70" weight="152">
+        <attvalues>
+          <attvalue for="2" value="-0.195425" />
+          <attvalue for="3" value="Negativo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="return" id="71" weight="407">
+        <attvalues>
+          <attvalue for="2" value="0.16801990171990172" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+      <edge source="Experiencia" target="excellent" id="72" weight="93">
+        <attvalues>
+          <attvalue for="2" value="0.8010086021505376" />
+          <attvalue for="3" value="Positivo" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>
