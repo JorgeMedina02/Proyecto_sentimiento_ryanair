@@ -17,7 +17,7 @@ try:
 except Exception:
     df = pd.read_csv('../data/processed/ryanair_limpios.csv')
 
-# 2. CONFIGURACIÓN DE ESTILOS
+# 2. ESTILOS
 # =================================================================
 COLORES = {
     'positive': '#27AE60',
@@ -38,7 +38,7 @@ ESTILO_CARD = {
     'borderRadius': '16px',
     'boxShadow': '0 4px 24px rgba(7,53,144,0.07)',
     'marginBottom': '32px',
-    'border': '1px solid #DDE3EC'
+    'border': '1px solid #DDE3EC',
 }
 
 ESTILO_KPI = {
@@ -49,14 +49,29 @@ ESTILO_KPI = {
     'borderTop': f'4px solid {COLORES["accent"]}',
 }
 
-# 3. MÉTRICAS GLOBALES
+def section_title(text):
+    return html.H2(text, style={
+        'color': COLORES['accent'],
+        'fontSize': '1.4em',
+        'borderBottom': f'2px solid {COLORES["accent"]}',
+        'paddingBottom': '12px',
+        'marginBottom': '24px',
+    })
+
+def section_subtitle(text):
+    return html.P(text, style={
+        'color': COLORES['muted'],
+        'marginBottom': '28px',
+        'fontSize': '0.97em',
+    })
+
+# 3. MÉTRICAS
 # =================================================================
 total_resenas   = len(df)
 rating_medio    = df['Overall Rating'].mean()
 tasa_detraccion = (df['Sentiment_Label'] == 'negative').mean() * 100
 tasa_promocion  = (df['Sentiment_Label'] == 'positive').mean() * 100
 
-# Sentimiento por tema
 if 'Tema' in df.columns:
     sent_por_tema = (
         df.groupby('Tema')['Sentiment_Score']
@@ -72,11 +87,11 @@ else:
     sent_por_tema = pd.DataFrame()
     sent_pos_neg  = pd.DataFrame()
 
-# 4. CONTENIDO TEXTUAL
+# 4. TEXTOS
 # =================================================================
 INTRO_METODOLOGIA = """
 Este sistema de **Business Intelligence** emplea un pipeline de **Procesamiento de Lenguaje Natural (NLP)** 
-para decodificar la percepción pública de Ryanair a partir de 2.249 reseñas verificadas de pasajeros.
+para decodificar la percepción pública de Ryanair a partir de **2.249 reseñas verificadas** de pasajeros.
 
 A diferencia de los análisis de puntuación tradicionales, este proyecto implementa **Análisis de Sentimiento 
 Basado en Aspectos (ABSA)**: cada reseña se descompone en los pilares operativos que menciona, asignando 
@@ -162,8 +177,7 @@ el valor del precio base, pero experimenta una fricción económica intensa en l
 - **"price"** y **"priority"** — en verde tenue: el precio base y la tarifa prioritaria 
   se perciben como razonables.
 
-**Señales neutras:** **"fare"**, **"cheap"** y **"paying"** en amarillo: términos descriptivos 
-sin carga emocional específica.
+**Señales neutras:** **"fare"**, **"cheap"** y **"paying"** en amarillo.
 
 **Conclusión:** El cliente llega atraído por el precio anunciado, pero la experiencia real del 
 pago acumula fricciones que dañan la percepción global — fenómeno de *price decoupling*.
@@ -184,12 +198,11 @@ disociación entre el proceso de embarque (positivo) y todo lo relativo al equip
 **Señales negativas dominantes:**
 - **"carry"** — arista roja más intensa: señala directamente la política que obliga a pagar 
   por maletas de mano o confiscarlas en puerta de embarque.
-- **"checkin"** y **"checking"** — el proceso de facturación, online y en mostrador, 
-  genera alta conflictividad.
+- **"checkin"** y **"checking"** — el proceso de facturación genera alta conflictividad.
 - **"gate"**, **"desk"**, **"overhead"** — la experiencia física en el aeropuerto relacionada 
   con el equipaje es mayoritariamente negativa.
 - **"bag"**, **"bags"**, **"suitcase"**, **"checked"** — prácticamente todo el vocabulario 
-  de maletas facturadas aparece con aristas rojas, sin término positivo en este sub-grupo.
+  de maletas aparece con aristas rojas.
 
 **Señales positivas:**
 - **"boarding"** — arista verde más gruesa: el proceso de embarque, una vez el equipaje está 
@@ -220,10 +233,10 @@ claro que el resto, reflejando que el sentimiento medio global de este pilar es 
   y competente en el trato directo.
 
 **Señales negativas:**
-- **"service"** — arista roja gruesa, aparente contradicción: "service" se usa en contextos 
-  de **fallo del sistema** (reclamaciones, incidencias) mientras "crew" se reserva para 
-  la interacción humana en cabina. Son dominios distintos en la mente del pasajero.
-- **"rude"** — en rojo pero arista fina: episodios minoritarios estadísticamente.
+- **"service"** — arista roja gruesa: "service" se usa en contextos de **fallo del sistema** 
+  (reclamaciones, incidencias) mientras "crew" se reserva para la interacción humana en cabina. 
+  Son dominios distintos en la mente del pasajero.
+- **"rude"** — en rojo pero arista fina: episodios estadísticamente minoritarios.
 - **"ignored"** — tenue, en situaciones puntuales de crisis operativa.
 
 **Señal neutra clave:**
@@ -257,8 +270,7 @@ La renovación de flota está produciendo un cambio real en la percepción del c
 - **"uncomfortable"** y **"recline"** — la imposibilidad de reclinar sigue siendo un dolor 
   en trayectos largos.
 - **"website"** — arista roja en el grafo de asientos: las quejas sobre la web de selección 
-  de asientos (proceso confuso, cobros inesperados) **contaminan retroactivamente** la 
-  valoración del producto físico. Hallazgo transversal clave.
+  **contaminan retroactivamente** la valoración del producto físico. Hallazgo transversal clave.
 
 **Señales neutras:** **"sit"** y **"cabin"** en amarillo, puramente descriptivos.
 
@@ -275,28 +287,26 @@ La renovación de flota está produciendo un cambio real en la percepción del c
         'analisis': """
 ### Diagnóstico de la Red
 
-La red de Experiencia es el **nodo síntesis** del modelo: aquí el pasajero evalúa la totalidad 
-del viaje. Exhibe la **polarización más extrema** de todos los pilares — no existe experiencia 
-media; o el viaje funciona y el pasajero lo defiende activamente, o falla y la crítica es contundente.
+La red de Experiencia es el **nodo síntesis** del modelo. Exhibe la **polarización más extrema** 
+de todos los pilares — no existe experiencia media; o el viaje funciona y el pasajero lo 
+defiende activamente, o falla y la crítica es contundente.
 
 **Señales positivas clave:**
-- **"return"** — arista verde más gruesa de toda la red, y el hallazgo más estratégicamente 
-  valioso del modelo completo. Representa la **intención de volver**: el pasajero satisfecho 
-  no solo valora, regresa y fideliza.
+- **"return"** — arista verde más gruesa de toda la red: representa la **intención de volver**, 
+  el KPI más directo de fidelización. El pasajero satisfecho no solo valora, regresa.
 - **"review"** y **"good"** — en verde: cuando la experiencia es positiva, el pasajero deja 
-  reseñas proactivamente y usa "good" como resumen evaluativo.
+  reseñas proactivamente.
 - **"recommend"** — en verde: una parte relevante del corpus recomienda explícitamente la aerolínea.
 
 **Señales negativas significativas:**
 - **"worst"** — arista roja gruesa: los insatisfechos usan superlativos negativos, los fallos 
   acumulados (puntualidad + equipaje) generan reacción emocionalmente intensa.
-- **"experience"** — en rojo: el sustantivo aparece más en contextos negativos 
-  (*"my experience was terrible"*), siendo un indicador agregado de fracaso.
+- **"experience"** — en rojo: el sustantivo aparece más en contextos negativos, siendo un 
+  indicador agregado de fracaso.
 - **"excellent"** — en rojo: resultado contraintuitivo explicable por **ironía o sarcasmo** 
-  (*"excellent job ruining my trip"*), fenómeno documentado que VADER detecta parcialmente.
+  (*"excellent job ruining my trip"*), fenómeno que VADER detecta parcialmente.
 
-**Señales neutras:** **"customer"** y **"customers"** en amarillo, reservando la carga 
-emocional para los atributos del servicio.
+**Señales neutras:** **"customer"** y **"customers"** en amarillo.
 
 **Conclusión:** Ryanair opera con un **modelo de satisfacción bimodal**. Reducir los fallos 
 críticos no solo elimina detractores — convierte pasajeros neutrales en promotores activos.
@@ -304,7 +314,7 @@ críticos no solo elimina detractores — convierte pasajeros neutrales en promo
     },
 }
 
-# 6. DATOS MATRIZ FORTALEZAS / DEBILIDADES
+# 6. FORTALEZAS Y DEBILIDADES
 # =================================================================
 FORTALEZAS = [
     {
@@ -370,7 +380,6 @@ DEBILIDADES = [
         'impacto': 'MODERADO',
     },
 ]
-
 
 # 7. FIGURAS
 # =================================================================
@@ -465,10 +474,16 @@ def build_radar():
     return fig
 
 
-# 8. APP LAYOUT
+# 8. APP
 # =================================================================
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 app.title = "Ryanair Intelligence Dashboard"
+
+tab_style          = {'fontWeight': '600', 'padding': '12px 16px'}
+tab_selected_style = {
+    'backgroundColor': COLORES['accent'], 'color': 'white',
+    'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0',
+}
 
 app.layout = html.Div(style={
     'backgroundColor': COLORES['bg'],
@@ -476,7 +491,7 @@ app.layout = html.Div(style={
     'minHeight': '100vh',
 }, children=[
 
-    # ── HEADER ────────────────────────────────────────────────────
+    # ── 1. HEADER ─────────────────────────────────────────────────
     html.Header(style={
         'background': f'linear-gradient(135deg, {COLORES["accent"]} 0%, {COLORES["accent2"]} 100%)',
         'padding': '56px 64px 48px', 'color': 'white',
@@ -489,141 +504,80 @@ app.layout = html.Div(style={
         }),
         html.Span("RYANAIR", style={
             'fontSize': '0.75em', 'letterSpacing': '0.35em', 'opacity': '0.7',
-            'display': 'block', 'marginBottom': '8px', 'textTransform': 'uppercase', 'fontWeight': '500',
+            'display': 'block', 'marginBottom': '8px',
+            'textTransform': 'uppercase', 'fontWeight': '500',
         }),
         html.H1("Customer Intelligence Dashboard", style={
             'margin': '0', 'fontSize': '2.6em', 'fontWeight': '700',
             'lineHeight': '1.15', 'maxWidth': '700px',
         }),
-        html.P("Análisis de Redes Semánticas y Sentimiento · 2.249 reseñas verificadas · Pipeline NLP + VADER",
-               style={'marginTop': '16px', 'opacity': '0.75', 'fontSize': '1.05em', 'maxWidth': '640px'}),
+        html.P(
+            "Análisis de Redes Semánticas y Sentimiento · "
+            "2.249 reseñas verificadas · Pipeline NLP + VADER",
+            style={'marginTop': '16px', 'opacity': '0.75',
+                   'fontSize': '1.05em', 'maxWidth': '640px'},
+        ),
     ]),
 
     html.Div(style={'padding': '48px 64px'}, children=[
 
-        # ── KPIs ──────────────────────────────────────────────────
-        html.Div(style={'display': 'flex', 'gap': '24px', 'marginBottom': '40px'}, children=[
+        # ── 2. CONTEXTO METODOLÓGICO ──────────────────────────────
+        html.Div(style=ESTILO_CARD, children=[
+            section_title("Contexto Metodológico"),
+            dcc.Markdown(INTRO_METODOLOGIA, style={
+                'lineHeight': '1.85', 'fontSize': '1.0em', 'color': COLORES['text'],
+            }),
+            html.Hr(style={'border': 'none', 'borderTop': '1px solid #DDE3EC', 'margin': '24px 0'}),
+            dcc.Markdown(LEYENDA_GRAFOS, style={'lineHeight': '1.7', 'fontSize': '0.97em'}),
+        ]),
+
+        # ── 3. KPIs ───────────────────────────────────────────────
+        html.Div(style={'display': 'flex', 'gap': '24px', 'marginBottom': '32px'}, children=[
             html.Div(style=ESTILO_KPI, children=[
-                html.Div(f"{total_resenas:,}", style={'color': COLORES['accent'], 'fontSize': '2.8em', 'fontWeight': '800', 'lineHeight': '1'}),
-                html.P("RESEÑAS ANALIZADAS", style={'fontWeight': '600', 'color': COLORES['muted'], 'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0'}),
+                html.Div(f"{total_resenas:,}", style={
+                    'color': COLORES['accent'], 'fontSize': '2.8em',
+                    'fontWeight': '800', 'lineHeight': '1',
+                }),
+                html.P("RESEÑAS ANALIZADAS", style={
+                    'fontWeight': '600', 'color': COLORES['muted'],
+                    'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0',
+                }),
             ]),
             html.Div(style={**ESTILO_KPI, 'borderTopColor': '#F39C12'}, children=[
-                html.Div(f"{rating_medio:.1f} / 10", style={'color': '#F39C12', 'fontSize': '2.8em', 'fontWeight': '800', 'lineHeight': '1'}),
-                html.P("SATISFACCIÓN MEDIA", style={'fontWeight': '600', 'color': COLORES['muted'], 'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0'}),
+                html.Div(f"{rating_medio:.1f} / 10", style={
+                    'color': '#F39C12', 'fontSize': '2.8em',
+                    'fontWeight': '800', 'lineHeight': '1',
+                }),
+                html.P("SATISFACCIÓN MEDIA", style={
+                    'fontWeight': '600', 'color': COLORES['muted'],
+                    'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0',
+                }),
             ]),
             html.Div(style={**ESTILO_KPI, 'borderTopColor': COLORES['negative']}, children=[
-                html.Div(f"{tasa_detraccion:.1f}%", style={'color': COLORES['negative'], 'fontSize': '2.8em', 'fontWeight': '800', 'lineHeight': '1'}),
-                html.P("ÍNDICE DE DETRACCIÓN", style={'fontWeight': '600', 'color': COLORES['muted'], 'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0'}),
+                html.Div(f"{tasa_detraccion:.1f}%", style={
+                    'color': COLORES['negative'], 'fontSize': '2.8em',
+                    'fontWeight': '800', 'lineHeight': '1',
+                }),
+                html.P("ÍNDICE DE DETRACCIÓN", style={
+                    'fontWeight': '600', 'color': COLORES['muted'],
+                    'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0',
+                }),
             ]),
             html.Div(style={**ESTILO_KPI, 'borderTopColor': COLORES['positive']}, children=[
-                html.Div(f"{tasa_promocion:.1f}%", style={'color': COLORES['positive'], 'fontSize': '2.8em', 'fontWeight': '800', 'lineHeight': '1'}),
-                html.P("ÍNDICE DE PROMOCIÓN", style={'fontWeight': '600', 'color': COLORES['muted'], 'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0'}),
+                html.Div(f"{tasa_promocion:.1f}%", style={
+                    'color': COLORES['positive'], 'fontSize': '2.8em',
+                    'fontWeight': '800', 'lineHeight': '1',
+                }),
+                html.P("ÍNDICE DE PROMOCIÓN", style={
+                    'fontWeight': '600', 'color': COLORES['muted'],
+                    'fontSize': '0.78em', 'letterSpacing': '0.1em', 'margin': '10px 0 0',
+                }),
             ]),
         ]),
 
-        # ── MAPA ESTRATÉGICO ──────────────────────────────────────
+        # ── 4. ANÁLISIS CUANTITATIVO ──────────────────────────────
         html.Div(style=ESTILO_CARD, children=[
-            html.H2("Mapa Estratégico: Fortalezas y Debilidades", style={
-                'color': COLORES['accent'], 'fontSize': '1.4em',
-                'borderBottom': f'2px solid {COLORES["accent"]}',
-                'paddingBottom': '12px', 'marginBottom': '24px',
-            }),
-            html.P("Síntesis ejecutiva derivada del análisis de redes semánticas. "
-                   "Cada hallazgo está sustentado en las aristas y nodos observados en los grafos de Gephi.",
-                   style={'color': COLORES['muted'], 'marginBottom': '28px', 'fontSize': '0.97em'}),
-
-            html.Div(style={'display': 'flex', 'gap': '32px'}, children=[
-
-                # FORTALEZAS
-                html.Div(style={'flex': '1'}, children=[
-                    html.Div(style={
-                        'backgroundColor': '#EAFAF1',
-                        'borderLeft': f'4px solid {COLORES["positive"]}',
-                        'padding': '14px 18px', 'borderRadius': '8px', 'marginBottom': '20px',
-                    }, children=[
-                        html.H3("✅ FORTALEZAS IDENTIFICADAS", style={
-                            'color': COLORES['positive'], 'margin': '0',
-                            'fontSize': '0.95em', 'letterSpacing': '0.08em',
-                        }),
-                        html.P("Activos competitivos validados estadísticamente por el modelo NLP.",
-                               style={'color': '#555', 'margin': '4px 0 0', 'fontSize': '0.85em'}),
-                    ]),
-                    *[html.Div(style={
-                        'backgroundColor': 'white', 'border': '1px solid #D5F5E3',
-                        'borderRadius': '10px', 'padding': '18px 20px', 'marginBottom': '14px',
-                    }, children=[
-                        html.Div(style={'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'marginBottom': '8px'}, children=[
-                            html.Strong(f['pilar'], style={'color': COLORES['text'], 'fontSize': '1em'}),
-                            html.Span('FORTALEZA', style={
-                                'backgroundColor': COLORES['positive'], 'color': 'white',
-                                'fontSize': '0.68em', 'fontWeight': '700', 'letterSpacing': '0.08em',
-                                'padding': '3px 10px', 'borderRadius': '20px',
-                            }),
-                        ]),
-                        html.P(f'Señal en grafo: {f["activos"]}',
-                               style={'color': COLORES['muted'], 'fontSize': '0.85em', 'margin': '0 0 6px', 'fontStyle': 'italic'}),
-                        html.P(f['mecanismo'],
-                               style={'color': '#444', 'fontSize': '0.9em', 'margin': '0 0 8px', 'lineHeight': '1.5'}),
-                        html.Div(style={'backgroundColor': '#F0FAF4', 'borderRadius': '6px', 'padding': '8px 12px'}, children=[
-                            html.P(f'→ {f["accion"]}',
-                                   style={'color': COLORES['positive'], 'fontSize': '0.88em', 'margin': '0', 'fontWeight': '600'}),
-                        ]),
-                    ]) for f in FORTALEZAS],
-                ]),
-
-                # DEBILIDADES
-                html.Div(style={'flex': '1'}, children=[
-                    html.Div(style={
-                        'backgroundColor': '#FDEDEC',
-                        'borderLeft': f'4px solid {COLORES["negative"]}',
-                        'padding': '14px 18px', 'borderRadius': '8px', 'marginBottom': '20px',
-                    }, children=[
-                        html.H3("⚠️ DEBILIDADES A MEJORAR", style={
-                            'color': COLORES['negative'], 'margin': '0',
-                            'fontSize': '0.95em', 'letterSpacing': '0.08em',
-                        }),
-                        html.P("Puntos de dolor detectados con mayor frecuencia e intensidad negativa.",
-                               style={'color': '#555', 'margin': '4px 0 0', 'fontSize': '0.85em'}),
-                    ]),
-                    *[html.Div(style={
-                        'backgroundColor': 'white',
-                        'border': f'1px solid {"#FADBD8" if d["impacto"]=="CRÍTICO" else "#FAE5D3" if d["impacto"]=="ALTO" else "#F9F3DC"}',
-                        'borderRadius': '10px', 'padding': '18px 20px', 'marginBottom': '14px',
-                    }, children=[
-                        html.Div(style={'display': 'flex', 'justifyContent': 'space-between', 'alignItems': 'center', 'marginBottom': '8px'}, children=[
-                            html.Strong(d['pilar'], style={'color': COLORES['text'], 'fontSize': '1em'}),
-                            html.Span(d['impacto'], style={
-                                'backgroundColor': COLORES['negative'] if d['impacto'] == 'CRÍTICO' else COLORES['warn'] if d['impacto'] == 'ALTO' else '#F1C40F',
-                                'color': 'white',
-                                'fontSize': '0.68em', 'fontWeight': '700', 'letterSpacing': '0.08em',
-                                'padding': '3px 10px', 'borderRadius': '20px',
-                            }),
-                        ]),
-                        html.P(f'Señal en grafo: {d["problema"]}',
-                               style={'color': COLORES['muted'], 'fontSize': '0.85em', 'margin': '0 0 6px', 'fontStyle': 'italic'}),
-                        html.P(d['mecanismo'],
-                               style={'color': '#444', 'fontSize': '0.9em', 'margin': '0 0 8px', 'lineHeight': '1.5'}),
-                        html.Div(style={
-                            'backgroundColor': '#FEF0F0' if d['impacto'] == 'CRÍTICO' else '#FEF9F0',
-                            'borderRadius': '6px', 'padding': '8px 12px',
-                        }, children=[
-                            html.P(f'→ {d["accion"]}', style={
-                                'color': COLORES['negative'] if d['impacto'] == 'CRÍTICO' else COLORES['warn'],
-                                'fontSize': '0.88em', 'margin': '0', 'fontWeight': '600',
-                            }),
-                        ]),
-                    ]) for d in DEBILIDADES],
-                ]),
-            ]),
-        ]),
-
-        # ── VISUALIZACIONES CUANTITATIVAS ─────────────────────────
-        html.Div(style=ESTILO_CARD, children=[
-            html.H2("Análisis Cuantitativo por Pilar", style={
-                'color': COLORES['accent'], 'fontSize': '1.4em',
-                'borderBottom': f'2px solid {COLORES["accent"]}',
-                'paddingBottom': '12px', 'marginBottom': '24px',
-            }),
+            section_title("Análisis Cuantitativo por Pilar"),
             html.Div(style={'display': 'flex', 'gap': '40px', 'alignItems': 'flex-start'}, children=[
                 html.Div(style={'flex': '1.4'}, children=[
                     html.H4("Distribución de sentimiento por pilar",
@@ -642,45 +596,33 @@ app.layout = html.Div(style={
             ]),
         ]),
 
-        # ── ANÁLISIS DETALLADO POR PILARES ────────────────────────
+        # ── 5. DIAGNÓSTICO DETALLADO POR PILAR ───────────────────
         html.Div(style=ESTILO_CARD, children=[
-            html.H2("Diagnóstico Detallado por Pilar Semántico", style={
-                'color': COLORES['accent'], 'fontSize': '1.4em',
-                'borderBottom': f'2px solid {COLORES["accent"]}',
-                'paddingBottom': '12px', 'marginBottom': '8px',
-            }),
-            html.P("Seleccione un pilar para acceder al análisis completo de su red semántica generada con Gephi.",
-                   style={'color': COLORES['muted'], 'marginBottom': '28px', 'fontSize': '0.97em'}),
+            section_title("Diagnóstico Detallado por Pilar Semántico"),
+            section_subtitle(
+                "Seleccione un pilar para acceder al análisis completo "
+                "de su red semántica generada con Gephi."
+            ),
             dcc.Tabs(id="tabs-pilares", value='tab-puntualidad', children=[
                 dcc.Tab(label='⏱ PUNTUALIDAD', value='tab-puntualidad',
-                        style={'fontWeight': '600', 'padding': '12px 16px'},
-                        selected_style={'backgroundColor': COLORES['accent'], 'color': 'white', 'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0'}),
-                dcc.Tab(label='💰 PRECIO', value='tab-precio',
-                        style={'fontWeight': '600', 'padding': '12px 16px'},
-                        selected_style={'backgroundColor': COLORES['accent'], 'color': 'white', 'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0'}),
-                dcc.Tab(label='🧳 EQUIPAJE', value='tab-equipaje',
-                        style={'fontWeight': '600', 'padding': '12px 16px'},
-                        selected_style={'backgroundColor': COLORES['accent'], 'color': 'white', 'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0'}),
-                dcc.Tab(label='👥 PERSONAL', value='tab-personal',
-                        style={'fontWeight': '600', 'padding': '12px 16px'},
-                        selected_style={'backgroundColor': COLORES['accent'], 'color': 'white', 'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0'}),
-                dcc.Tab(label='💺 ASIENTOS', value='tab-asientos',
-                        style={'fontWeight': '600', 'padding': '12px 16px'},
-                        selected_style={'backgroundColor': COLORES['accent'], 'color': 'white', 'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0'}),
+                        style=tab_style, selected_style=tab_selected_style),
+                dcc.Tab(label='💰 PRECIO',      value='tab-precio',
+                        style=tab_style, selected_style=tab_selected_style),
+                dcc.Tab(label='🧳 EQUIPAJE',    value='tab-equipaje',
+                        style=tab_style, selected_style=tab_selected_style),
+                dcc.Tab(label='👥 PERSONAL',    value='tab-personal',
+                        style=tab_style, selected_style=tab_selected_style),
+                dcc.Tab(label='💺 ASIENTOS',    value='tab-asientos',
+                        style=tab_style, selected_style=tab_selected_style),
                 dcc.Tab(label='⭐ EXPERIENCIA', value='tab-experiencia',
-                        style={'fontWeight': '600', 'padding': '12px 16px'},
-                        selected_style={'backgroundColor': COLORES['accent'], 'color': 'white', 'fontWeight': '700', 'padding': '12px 16px', 'borderRadius': '6px 6px 0 0'}),
+                        style=tab_style, selected_style=tab_selected_style),
             ]),
             html.Div(id='tabs-content-pilares', style={'paddingTop': '36px'}),
         ]),
 
-        # ── TOPOLOGÍA GLOBAL ──────────────────────────────────────
+        # ── 6. TOPOLOGÍA GLOBAL ───────────────────────────────────
         html.Div(style=ESTILO_CARD, children=[
-            html.H2("Topología Global de la Red Semántica", style={
-                'color': COLORES['accent'], 'fontSize': '1.4em',
-                'borderBottom': f'2px solid {COLORES["accent"]}',
-                'paddingBottom': '12px', 'marginBottom': '20px',
-            }),
+            section_title("Topología Global de la Red Semántica"),
             html.Div(style={'display': 'flex', 'gap': '48px', 'alignItems': 'flex-start'}, children=[
                 html.Div(style={'flex': '1'}, children=[
                     dcc.Markdown("""
@@ -715,34 +657,129 @@ de experiencia más cohesionadas y positivas.
             ]),
         ]),
 
-        # ── METODOLOGÍA ───────────────────────────────────────────
+        # ── 7. MAPA ESTRATÉGICO (CONCLUSIÓN) ─────────────────────
         html.Div(style=ESTILO_CARD, children=[
-            html.H2("Contexto Metodológico", style={
-                'color': COLORES['accent'], 'fontSize': '1.4em',
-                'borderBottom': f'2px solid {COLORES["accent"]}',
-                'paddingBottom': '12px', 'marginBottom': '20px',
-            }),
-            dcc.Markdown(INTRO_METODOLOGIA, style={'lineHeight': '1.85', 'fontSize': '1.0em', 'color': COLORES['text']}),
-            html.Hr(style={'border': 'none', 'borderTop': '1px solid #DDE3EC', 'margin': '24px 0'}),
-            dcc.Markdown(LEYENDA_GRAFOS, style={'lineHeight': '1.7', 'fontSize': '0.97em'}),
+            section_title("Conclusiones: Fortalezas y Debilidades"),
+            section_subtitle(
+                "Síntesis ejecutiva derivada del análisis de redes semánticas. "
+                "Cada hallazgo está sustentado en las aristas y nodos observados en los grafos de Gephi."
+            ),
+            html.Div(style={'display': 'flex', 'gap': '32px'}, children=[
+
+                # FORTALEZAS
+                html.Div(style={'flex': '1'}, children=[
+                    html.Div(style={
+                        'backgroundColor': '#EAFAF1',
+                        'borderLeft': f'4px solid {COLORES["positive"]}',
+                        'padding': '14px 18px', 'borderRadius': '8px', 'marginBottom': '20px',
+                    }, children=[
+                        html.H3("✅ FORTALEZAS IDENTIFICADAS", style={
+                            'color': COLORES['positive'], 'margin': '0',
+                            'fontSize': '0.95em', 'letterSpacing': '0.08em',
+                        }),
+                        html.P("Activos competitivos validados estadísticamente por el modelo NLP.",
+                               style={'color': '#555', 'margin': '4px 0 0', 'fontSize': '0.85em'}),
+                    ]),
+                    *[html.Div(style={
+                        'backgroundColor': 'white', 'border': '1px solid #D5F5E3',
+                        'borderRadius': '10px', 'padding': '18px 20px', 'marginBottom': '14px',
+                    }, children=[
+                        html.Div(style={
+                            'display': 'flex', 'justifyContent': 'space-between',
+                            'alignItems': 'center', 'marginBottom': '8px',
+                        }, children=[
+                            html.Strong(f['pilar'], style={'color': COLORES['text'], 'fontSize': '1em'}),
+                            html.Span('FORTALEZA', style={
+                                'backgroundColor': COLORES['positive'], 'color': 'white',
+                                'fontSize': '0.68em', 'fontWeight': '700',
+                                'letterSpacing': '0.08em', 'padding': '3px 10px', 'borderRadius': '20px',
+                            }),
+                        ]),
+                        html.P(f'Señal en grafo: {f["activos"]}',
+                               style={'color': COLORES['muted'], 'fontSize': '0.85em',
+                                      'margin': '0 0 6px', 'fontStyle': 'italic'}),
+                        html.P(f['mecanismo'],
+                               style={'color': '#444', 'fontSize': '0.9em',
+                                      'margin': '0 0 8px', 'lineHeight': '1.5'}),
+                        html.Div(style={
+                            'backgroundColor': '#F0FAF4', 'borderRadius': '6px', 'padding': '8px 12px',
+                        }, children=[
+                            html.P(f'→ {f["accion"]}', style={
+                                'color': COLORES['positive'], 'fontSize': '0.88em',
+                                'margin': '0', 'fontWeight': '600',
+                            }),
+                        ]),
+                    ]) for f in FORTALEZAS],
+                ]),
+
+                # DEBILIDADES
+                html.Div(style={'flex': '1'}, children=[
+                    html.Div(style={
+                        'backgroundColor': '#FDEDEC',
+                        'borderLeft': f'4px solid {COLORES["negative"]}',
+                        'padding': '14px 18px', 'borderRadius': '8px', 'marginBottom': '20px',
+                    }, children=[
+                        html.H3("⚠️ DEBILIDADES A MEJORAR", style={
+                            'color': COLORES['negative'], 'margin': '0',
+                            'fontSize': '0.95em', 'letterSpacing': '0.08em',
+                        }),
+                        html.P("Puntos de dolor detectados con mayor frecuencia e intensidad negativa.",
+                               style={'color': '#555', 'margin': '4px 0 0', 'fontSize': '0.85em'}),
+                    ]),
+                    *[html.Div(style={
+                        'backgroundColor': 'white',
+                        'border': f'1px solid {"#FADBD8" if d["impacto"]=="CRÍTICO" else "#FAE5D3" if d["impacto"]=="ALTO" else "#F9F3DC"}',
+                        'borderRadius': '10px', 'padding': '18px 20px', 'marginBottom': '14px',
+                    }, children=[
+                        html.Div(style={
+                            'display': 'flex', 'justifyContent': 'space-between',
+                            'alignItems': 'center', 'marginBottom': '8px',
+                        }, children=[
+                            html.Strong(d['pilar'], style={'color': COLORES['text'], 'fontSize': '1em'}),
+                            html.Span(d['impacto'], style={
+                                'backgroundColor': (
+                                    COLORES['negative'] if d['impacto'] == 'CRÍTICO'
+                                    else COLORES['warn'] if d['impacto'] == 'ALTO'
+                                    else '#F1C40F'
+                                ),
+                                'color': 'white', 'fontSize': '0.68em', 'fontWeight': '700',
+                                'letterSpacing': '0.08em', 'padding': '3px 10px', 'borderRadius': '20px',
+                            }),
+                        ]),
+                        html.P(f'Señal en grafo: {d["problema"]}',
+                               style={'color': COLORES['muted'], 'fontSize': '0.85em',
+                                      'margin': '0 0 6px', 'fontStyle': 'italic'}),
+                        html.P(d['mecanismo'],
+                               style={'color': '#444', 'fontSize': '0.9em',
+                                      'margin': '0 0 8px', 'lineHeight': '1.5'}),
+                        html.Div(style={
+                            'backgroundColor': '#FEF0F0' if d['impacto'] == 'CRÍTICO' else '#FEF9F0',
+                            'borderRadius': '6px', 'padding': '8px 12px',
+                        }, children=[
+                            html.P(f'→ {d["accion"]}', style={
+                                'color': COLORES['negative'] if d['impacto'] == 'CRÍTICO' else COLORES['warn'],
+                                'fontSize': '0.88em', 'margin': '0', 'fontWeight': '600',
+                            }),
+                        ]),
+                    ]) for d in DEBILIDADES],
+                ]),
+            ]),
         ]),
 
-        # ── AUDITORÍA ─────────────────────────────────────────────
+        # ── 8. AUDITORÍA (APÉNDICE) ───────────────────────────────
         html.Div(style=ESTILO_CARD, children=[
-            html.H2("Auditoría de Reseñas Clasificadas", style={
-                'color': COLORES['accent'], 'fontSize': '1.4em',
-                'borderBottom': f'2px solid {COLORES["accent"]}',
-                'paddingBottom': '12px', 'marginBottom': '20px',
-            }),
-            html.P("Muestra de los primeros 100 registros del corpus procesado con etiqueta de sentimiento y tema asignado.",
-                   style={'color': COLORES['muted'], 'marginBottom': '20px', 'fontSize': '0.95em'}),
+            section_title("Apéndice: Auditoría de Reseñas Clasificadas"),
+            section_subtitle(
+                "Muestra de los primeros 100 registros del corpus procesado "
+                "con su etiqueta de sentimiento y tema asignado."
+            ),
             dash_table.DataTable(
                 data=df.head(100).to_dict('records'),
                 columns=[
-                    {"name": "Tema",               "id": "Tema"},
-                    {"name": "Sentimiento",         "id": "Sentiment_Label"},
-                    {"name": "Score",               "id": "Sentiment_Score"},
-                    {"name": "Comentario procesado","id": "Text_Clean"},
+                    {"name": "Tema",                "id": "Tema"},
+                    {"name": "Sentimiento",          "id": "Sentiment_Label"},
+                    {"name": "Score",                "id": "Sentiment_Score"},
+                    {"name": "Comentario procesado", "id": "Text_Clean"},
                 ],
                 page_size=10,
                 style_cell={
@@ -757,22 +794,28 @@ de experiencia más cohesionadas y positivas.
                     'border': 'none', 'padding': '14px 16px',
                 },
                 style_data_conditional=[
-                    {'if': {'filter_query': '{Sentiment_Label} = "positive"'}, 'color': COLORES['positive'], 'fontWeight': '600'},
-                    {'if': {'filter_query': '{Sentiment_Label} = "negative"'}, 'color': COLORES['negative'], 'fontWeight': '600'},
+                    {'if': {'filter_query': '{Sentiment_Label} = "positive"'},
+                     'color': COLORES['positive'], 'fontWeight': '600'},
+                    {'if': {'filter_query': '{Sentiment_Label} = "negative"'},
+                     'color': COLORES['negative'], 'fontWeight': '600'},
                     {'if': {'row_index': 'odd'}, 'backgroundColor': '#F8FAFC'},
                 ],
                 style_table={'overflowX': 'auto', 'borderRadius': '8px', 'overflow': 'hidden'},
             ),
         ]),
-    ]),
+
+    ]),  # fin padding
 
     # ── FOOTER ────────────────────────────────────────────────────
     html.Footer(style={
         'textAlign': 'center', 'padding': '40px 64px',
-        'borderTop': '1px solid #DDE3EC', 'color': COLORES['muted'], 'fontSize': '0.88em',
+        'borderTop': '1px solid #DDE3EC',
+        'color': COLORES['muted'], 'fontSize': '0.88em',
     }, children=[
-        html.P("© 2026 · Análisis de Opinión Pública y Modelos Predictivos III · "
-               "Pipeline: Python → NLTK/VADER → NetworkX → Gephi → Dash"),
+        html.P(
+            "© 2026 · Análisis de Opinión Pública y Modelos Predictivos III · "
+            "Pipeline: Python → NLTK/VADER → NetworkX → Gephi → Dash"
+        ),
     ]),
 ])
 
@@ -804,9 +847,11 @@ def render_pilar(tab):
                 'border': '1px solid #DDE3EC',
                 'boxShadow': '0 8px 24px rgba(7,53,144,0.08)', 'display': 'block',
             }),
-            html.P(f'Red semántica · {data["title"].split(":")[-1].strip()}',
-                   style={'textAlign': 'center', 'marginTop': '10px',
-                          'fontSize': '0.8em', 'color': COLORES['muted'], 'fontStyle': 'italic'}),
+            html.P(
+                f'Red semántica · {data["title"].split(":")[-1].strip()}',
+                style={'textAlign': 'center', 'marginTop': '10px',
+                       'fontSize': '0.8em', 'color': COLORES['muted'], 'fontStyle': 'italic'},
+            ),
         ]),
     ])
 
