@@ -100,7 +100,7 @@ Para replicar este entorno y ejecutar el dashboard en tu maquina local, sigue es
     ```
 
 5. Nota sobre datos crudos: 
-   Debido a las reglas del `.gitignore`, la carpeta `data/raw/` no se sube al repositorio. Deberas colocar el archivo `ryanair_reviews.csv` manualmente en esa ruta antes de ejecutar el notebook.
+   Debido a las reglas del `.gitignore`, la carpeta `data/raw/` no se sube al repositorio. Colocar el archivo `ryanair_reviews.csv` manualmente en esa ruta antes de ejecutar el notebook.
 
 ---
 
