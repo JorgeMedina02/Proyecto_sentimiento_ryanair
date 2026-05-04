@@ -1,6 +1,8 @@
-pandas
-dash
-plotly
-networkx
-nltk
-numpy
+pandas==2.2.0
+numpy==1.26.0
+matplotlib==3.8.0
+seaborn==0.13.0
+networkx==3.2.1
+nltk==3.8.1
+dash==2.14.2
+plotly==5.18.0
